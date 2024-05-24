@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       Components({
         resolvers: [
           AntDesignVueResolver({
-            importStyle: 'less' // 配置为less
+            importStyle: 'less'
           })
         ],
       })
