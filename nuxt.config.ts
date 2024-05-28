@@ -4,6 +4,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  modules: ['@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
   vite: {
     plugins: [
       Components({
