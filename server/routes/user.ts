@@ -1,7 +1,6 @@
-import { defineEventHandler } from 'h3'
+import { getDB } from "../utils/db/mysql";
 
-export default defineEventHandler( () => {
-  return {
-    uid: '123'
-  }
+export default defineEventHandler(async () => {
+  const [rows, fields] = await getDB().query('SELECT * FROM users')
+  console.log('users',rows);
 })
