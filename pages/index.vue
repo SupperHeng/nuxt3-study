@@ -26,12 +26,28 @@
 </template>
 
 <script setup lang="ts">
+// Fetch
+// const { data, pending, error, refresh } = await useFetch('https://api.nuxtjs.dev/mountains', {
+//   pick: ['title'],
+//   server: false
+// })
+
+// 调用userInfoFetch
+const {data: userData} = await userInfoFetch({})
+console.log('userData', userData);
+
+const param1 = ref('value1')
+const { data, pending, error, refresh } = await useFetch('https://api.nuxtjs.dev/mountains', {
+  query: { param1, param2: 'value2' },
+  server: false
+})
+
 // useCookie
-const userInfoCookie = useCookie('userInfo', {maxAge: 60})
-userInfoCookie.value = {
-  uid: 333,
-  username: 'xiaoheng'
-}
+// const userInfoCookie = useCookie('userInfo', {maxAge: 60})
+// userInfoCookie.value = {
+//   uid: 333,
+//   username: 'xiaoheng'
+// }
 
 const userinfo = useCookie('userInfo')
 console.log("userInfo",userinfo.value);
@@ -46,6 +62,7 @@ const add = () => {
   counter.value++
 }
 
+import { userInfoFetch } from "~/composables/useHttpFetch";
 // Pinia
 // 引入myStore
 import { useMyStore } from "~/store/myStore";
